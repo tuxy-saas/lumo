@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sample Page with Combined CSS</title>
+    <style>
+        :root {
+            --primary-color: #2997ff;
+            --secondary-color: #86868b;
+            --background-color: #000000;
+            --text-color: #f5f5f7;
+            --card-background: #1d1d1f;
+            --border-color: #424245;
+            --button-color: #ffffff;
+            --button-text: #000000;
+        }
+
+        body, html {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.47059;
+            font-weight: 400;
+            letter-spacing: -0.022em;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background-color: rgba(0, 0, 0, 0.8);
+            backdrop-filter: saturate(180%) blur(20px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-weight: 600;
+            font-size: 21px;
+            color: var(--text-color);
+        }
+
+        nav a {
+            color: var(--text-color);
+            text-decoration: none;
+            margin-left: 20px;
+            transition: color 0.3s ease;
+            font-size: 12px;
+        }
+
+        nav a:hover {
+            color: var(--primary-color);
+        }
+
+        .hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 120px 50px 80px;
+            min-height: 90vh;
+            background: linear-gradient(180deg, #000000 0%, #1a1a1a 100%);
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 600px;
+        }
+
+        .hero h1 {
+            font-size: 56px;
+            line-height: 1.07143;
+            font-weight: 600;
+            letter-spacing: -0.005em;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 28px;
+            line-height: 1.10722;
+            font-weight: 400;
+            letter-spacing: .004em;
+            margin-bottom: 30px;
+            color: var(--secondary-color);
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: var(--background-color);
+            padding: 12px 24px;
+            border-radius: 980px;
+            text-decoration: none;
+            font-weight: 400;
+            font-size: 17px;
+            line-height: 1.17648;
+            letter-spacing: -0.022em;
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background-color: #0077ed;
+        }
+
+        .hero-image {
+            margin-top: 50px;
+            position: relative;
+        }
+
+        .hero-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 18px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        main {
+            max-width: 980px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        .compress-container {
+            background-color: var(--card-background);
+            padding: 40px;
+            border-radius: 18px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 40px;
+        }
+
+        h2 {
+            font-size: 40px;
+            line-height: 1.1;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: var(--text-color);
+        }
+
+        .drop-zone {
+            border: 2px dashed var(--border-color);
+            border-radius: 18px;
+            padding: 40px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .drop-zone:hover, .drop-zone.dragover {
+            background-color: rgba(41, 151, 255, 0.1);
+            border-color: var(--primary-color);
+        }
+
+        @keyframes dropAnimation {
+            0% {
+                transform: translateY(-20px);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .drop-zone.file-dropped::after {
+            content: '📄';
+            font-size: 48px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: dropAnimation 0.5s ease-out;
+        }
+
+        #controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-bottom: 40px;
+            align-items: center;
+        }
+
+        #sizeMultiplier, #format-select {
+            width: 100%;
+            padding: 12px;
+            margin-top: 10px;
+            background-color: var(--card-background);
+            border: 1px solid var(--border-color);
+            color: var(--text-color);
+            border-radius: 8px;
+            font-size: 17px;
+        }
+
+        .btn {
+            background-color: var(--button-color);
+            color: var(--button-text);
+            border: none;
+            padding: 12px 24px;
+            border-radius: 980px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            font-size: 17px;
+            line-height: 1.17648;
+            letter-spacing: -0.022em;
+        }
+
+        .btn:hover {
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+            transform: scale(1.05);
+        }
+
+        .preview-item {
+            background-color: var(--card-background);
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .preview-item img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding: 100px 20px 60px;
+            }
+            .hero h1 {
+                font-size: 40px;
+            }
+            .hero p {
+                font-size: 21px;
+            }
+            .hero-image {
+                margin-top: 30px;
+            }
+            .features {
+                padding: 60px 20px;
+            }
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            .footer-links, .footer-social {
+                margin-top: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">MyLogo</div>
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#services">Services</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Welcome to Our Website</h1>
+            <p>Your success is our mission.</p>
+            <a href="#learn-more" class="cta-button">Learn More</a>
+        </div>
+        <div class="hero-image">
+            <img src="https://via.placeholder.com/600x400" alt="Hero Image">
+        </div>
+    </section>
+
+    <main>
+        <div class="compress-container">
+            <h2>Upload Your Files</h2>
+            <div class="drop-zone">
+                Drag & Drop Your Files Here
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">MyLogo</div>
+            <div class="footer-links">
+                <a href="#privacy">Privacy</a>
+                <a href="#terms">Terms</a>
+            </div>
+            <div class="footer-social">
+                <a href="#twitter" class="social-icon">Twitter</a>
+                <a href="#facebook" class="social-icon">Facebook</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
